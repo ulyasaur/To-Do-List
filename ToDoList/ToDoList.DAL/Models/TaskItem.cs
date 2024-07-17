@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace ToDoList.DAL.Models
 {
-    public class Task
+    public class TaskItem
     {
-        public int TaskId { get; set; }
+        public int TaskItemId { get; set; }
 
         public string Name { get; set; }
+
+        public TaskStatus Status { get; set; }
 
         public string? Description { get; set; }
     }
