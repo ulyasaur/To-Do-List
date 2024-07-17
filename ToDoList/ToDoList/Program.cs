@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using System;
+using ToDoList.DAL.Abstractions;
 using ToDoList.DAL.DbContexts;
+using ToDoList.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,12 @@ IConfiguration appConfig = new ConfigurationBuilder()
 builder.Services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(
                     appConfig.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAutoMapper(typeof(ToDoList.DAL.Mapping.MappingProfiles).Assembly);
+
+builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+
+builder.Services.AddLogging();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
