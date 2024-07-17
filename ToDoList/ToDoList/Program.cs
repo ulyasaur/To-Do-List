@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
                     appConfig.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAutoMapper(typeof(ToDoList.DAL.Mapping.MappingProfiles).Assembly);
+builder.Services.AddAutoMapper(typeof(ToDoList.BLL.Mapping.MappingProfiles).Assembly);
 
 builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
 
