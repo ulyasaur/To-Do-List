@@ -28,7 +28,7 @@ namespace ToDoList.DAL.Repositories
             _logger = logger;
         }
 
-        public async Task AddTaskItem(TaskItem taskItem)
+        public async Task AddTaskItemAsync(TaskItem taskItem)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace ToDoList.DAL.Repositories
             }
         }
 
-        public async Task DeleteTaskItem(int taskItemId)
+        public async Task DeleteTaskItemAsync(int taskItemId)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace ToDoList.DAL.Repositories
             }
         }
 
-        public async Task<List<TaskItem>> GetAllTaskItems(Expression<Func<TaskItem, bool>> filter)
+        public async Task<List<TaskItem>> GetAllTaskItemsAsync(Expression<Func<TaskItem, bool>> filter)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace ToDoList.DAL.Repositories
             }
         }
 
-        public async Task<TaskItem> GetTaskItem(Expression<Func<TaskItem, bool>> filter)
+        public async Task<TaskItem> GetTaskItemAsync(Expression<Func<TaskItem, bool>> filter)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace ToDoList.DAL.Repositories
             };
         }
 
-        public async Task UpdateTaskItem(TaskItem taskItem)
+        public async Task UpdateTaskItemAsync(TaskItem taskItem)
         {
             try
             {

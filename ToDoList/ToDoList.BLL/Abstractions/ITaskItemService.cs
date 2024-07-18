@@ -11,14 +11,14 @@ namespace ToDoList.BLL.Abstractions
 {
     public interface ITaskItemService
     {
-        Task<List<TaskItemDto>> GetAllTaskItems();
+        Task<List<TaskItemDto>> GetAllTaskItemsAsync();
 
-        Task<TaskItemDto> GetTaskItem(int taskItemId);
+        Task<TaskItemDto> GetTaskItemAsync(int taskItemId);
 
-        Task AddTaskItem(TaskItemDto taskItemDto);
+        Task AddTaskItemAsync(TaskItemDto taskItemDto);
 
-        Task UpdateTaskItem(TaskItemDto taskItemDto);
+        Task UpdateTaskItemAsync(TaskItemDto taskItemDto);
 
-        Task DeleteTaskItem(int taskItemId);
+        Task DeleteTaskItemAsync(int taskItemId);
     }
 }

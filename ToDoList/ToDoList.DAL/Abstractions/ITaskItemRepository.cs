@@ -10,14 +10,14 @@ namespace ToDoList.DAL.Abstractions
 {
     public interface ITaskItemRepository
     {
-        Task<List<TaskItem>> GetAllTaskItems(Expression<Func<TaskItem, bool>> filter);
+        Task<List<TaskItem>> GetAllTaskItemsAsync(Expression<Func<TaskItem, bool>> filter);
 
-        Task<TaskItem> GetTaskItem(Expression<Func<TaskItem, bool>> filter);
+        Task<TaskItem> GetTaskItemAsync(Expression<Func<TaskItem, bool>> filter);
 
-        Task AddTaskItem(TaskItem taskItem);
+        Task AddTaskItemAsync(TaskItem taskItem);
 
-        Task UpdateTaskItem(TaskItem taskItem);
+        Task UpdateTaskItemAsync(TaskItem taskItem);
 
-        Task DeleteTaskItem(int taskItemId);
+        Task DeleteTaskItemAsync(int taskItemId);
     }
 }
