@@ -42,7 +42,7 @@ namespace ToDoList.DAL.Migrations
 
                     b.HasKey("TaskItemId");
 
-                    b.ToTable("TaskItems");
+                    b.ToTable("TaskItems", (string)null);
                 });
 #pragma warning restore 612, 618
         }

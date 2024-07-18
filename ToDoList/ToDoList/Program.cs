@@ -2,7 +2,9 @@ using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
+using ToDoList.BLL.Abstractions;
 using ToDoList.BLL.Dtos;
+using ToDoList.BLL.Services;
 using ToDoList.BLL.Validators;
 using ToDoList.DAL.Abstractions;
 using ToDoList.DAL.DbContexts;
@@ -26,6 +28,8 @@ builder.Services.AddAutoMapper(typeof(ToDoList.BLL.Mapping.MappingProfiles).Asse
 builder.Services.AddScoped<IValidator<TaskItemDto>, TaskItemDtoValidator>();
 
 builder.Services.AddScoped<ITaskItemRepository, TaskItemRepository>();
+
+builder.Services.AddScoped<ITaskItemService, TaskItemService>();
 
 builder.Services.AddLogging();
 

@@ -28,7 +28,7 @@ namespace ToDoList.DAL.Repositories
             _logger = logger;
         }
 
-        public async Task AddTaskItem(TaskItem taskItem)
+        public async Task AddTaskItemAsync(TaskItem taskItem)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace ToDoList.DAL.Repositories
             }
         }
 
-        public async Task DeleteTaskItem(int taskItemId)
+        public async Task DeleteTaskItemAsync(int taskItemId)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace ToDoList.DAL.Repositories
             }
         }
 
-        public async Task<List<TaskItem>> GetAllTaskItems(Expression<Func<TaskItem, bool>> filter)
+        public async Task<List<TaskItem>> GetAllTaskItemsAsync(Expression<Func<TaskItem, bool>> filter)
         {
             try
             {
@@ -71,11 +71,12 @@ namespace ToDoList.DAL.Repositories
             }
         }
 
-        public async Task<TaskItem> GetTaskItem(Expression<Func<TaskItem, bool>> filter)
+        public async Task<TaskItem> GetTaskItemAsync(Expression<Func<TaskItem, bool>> filter)
         {
             try
             {
-                return await this._context.TaskItems.FirstOrDefaultAsync(filter);
+                return await this._context.TaskItems.FirstOrDefaultAsync(filter)
+                    ?? throw new InvalidOperationException("The task item was not found");
             }
             catch (Exception ex)
             {
@@ -84,11 +85,12 @@ namespace ToDoList.DAL.Repositories
             };
         }
 
-        public async Task UpdateTaskItem(TaskItem taskItem)
+        public async Task UpdateTaskItemAsync(TaskItem taskItem)
         {
             try
             {
-                TaskItem dbTaskItem = await this._context.TaskItems.AsNoTracking().SingleAsync(p => p.TaskItemId == taskItem.TaskItemId);
+                TaskItem dbTaskItem = await this._context.TaskItems.FirstOrDefaultAsync(p => p.TaskItemId == taskItem.TaskItemId)
+                    ?? throw new InvalidOperationException("The task item does not exist");
 
                 this._mapper.Map(taskItem, dbTaskItem);
 

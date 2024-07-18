@@ -13,7 +13,7 @@ namespace ToDoList.BLL.Validators
         public TaskItemDtoValidator() 
         { 
             RuleFor(t => t.Name).NotEmpty().MaximumLength(100);
-            RuleFor(t => t.Status).NotEmpty();
+            RuleFor(t => t.Status).NotNull();
         }
     }
 }
