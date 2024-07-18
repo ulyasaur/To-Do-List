@@ -102,7 +102,7 @@ namespace ToDoList.BLL.Services
 
             try
             {
-                TaskItemDto result = null;
+                TaskItemDto result = new TaskItemDto();
 
                 TaskItem taskItem = await this._taskItemRepository.GetTaskItemAsync(t => t.TaskItemId == taskItemId);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoList.DAL.Models.Enums;
 
 namespace ToDoList.DAL.Models
 {
@@ -12,7 +13,7 @@ namespace ToDoList.DAL.Models
 
         public string Name { get; set; }
 
-        public TaskStatus Status { get; set; }
+        public TaskItemStatus Status { get; set; }
 
         public string? Description { get; set; }
     }

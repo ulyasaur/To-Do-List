@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ToDoList.DAL.Models.Enums
+namespace ToDoList.BLL.Dtos.Enums
 {
-    public enum TaskStatus
+    public enum TaskItemStatusDto
     {
         ToDo,
         InProgress,

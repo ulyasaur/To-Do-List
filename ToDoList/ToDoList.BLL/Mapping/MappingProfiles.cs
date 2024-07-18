@@ -17,8 +17,8 @@ namespace ToDoList.BLL.Mapping
             CreateMap<TaskItem, TaskItemDto>();
             CreateMap<TaskItemDto, TaskItem>();
 
-            CreateMap<TaskStatus, TaskStatusDto>();
-            CreateMap<TaskStatusDto, TaskStatus>();
+            CreateMap<TaskStatus, TaskItemStatusDto>();
+            CreateMap<TaskItemStatusDto, TaskStatus>();
         }
     }
 }

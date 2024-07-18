@@ -75,7 +75,8 @@ namespace ToDoList.DAL.Repositories
         {
             try
             {
-                return await this._context.TaskItems.FirstOrDefaultAsync(filter);
+                return await this._context.TaskItems.FirstOrDefaultAsync(filter)
+                    ?? throw new InvalidOperationException("The task item was not found");
             }
             catch (Exception ex)
             {
@@ -88,7 +89,8 @@ namespace ToDoList.DAL.Repositories
         {
             try
             {
-                TaskItem dbTaskItem = await this._context.TaskItems.AsNoTracking().SingleAsync(p => p.TaskItemId == taskItem.TaskItemId);
+                TaskItem dbTaskItem = await this._context.TaskItems.FirstOrDefaultAsync(p => p.TaskItemId == taskItem.TaskItemId)
+                    ?? throw new InvalidOperationException("The task item does not exist");
 
                 this._mapper.Map(taskItem, dbTaskItem);
 
