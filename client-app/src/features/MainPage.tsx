@@ -11,7 +11,7 @@ function MainPage() {
                         <StatusArea areaColour="salmon" areaName="To Do" />
                     </Col>
                     <Col span={8}>
-                        <StatusArea areaColour="lemonchiffon" areaName="In Progress" />
+                        <StatusArea areaColour="khaki" areaName="In Progress" />
                     </Col>
                     <Col span={8}>
                         <StatusArea areaColour="lightgreen" areaName="Done" />

@@ -11,9 +11,9 @@ interface Props {
 function StatusArea({ areaColour, areaName }: Props) {
     return (
         <Card title={areaName} style={{ backgroundColor: areaColour, minHeight: "90vh", borderRadius: "20px" }}>
-            <TaskCard />
-            <TaskCard />
-            <TaskCard />
+            <TaskCard statusColour={areaColour}/>
+            <TaskCard statusColour={areaColour}/>
+            <TaskCard statusColour={areaColour}/>
         </Card>
     );
 }
