@@ -1,23 +1,34 @@
 import { Card, Col, Divider, Flex, Layout, Row } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { EditOutlined, DeleteOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ViewTaskModal from '../app/common/modals/ViewTaskModal';
 import EditTaskModal from '../app/common/modals/EditTaskModal';
 
 interface Props {
     statusColour: string;
+    setDragging: (e:boolean) => void;
 }
 
 
-function TaskCard({ statusColour }: Props) {
+function TaskCard({ statusColour, setDragging }: Props) {
     const [isViewModalOpened, setViewModalOpened] = useState(false);
     const [isEditModalOpened, setEditModalOpened] = useState(false);
 
+    useEffect(() => {
+        setDragging(isEditModalOpened || isViewModalOpened)
+    }, [isEditModalOpened, isViewModalOpened])
+
     const actions: React.ReactNode[] = [
-        <InfoCircleOutlined key="view" onClick={() => setViewModalOpened(true)} />,
-        <EditOutlined key="edit" onClick={() => setEditModalOpened(true)} />,
-        <DeleteOutlined key="delete" />
+        <InfoCircleOutlined key="view" onPointerDown={(e)=> e.stopPropagation()} onClick={(e) => {
+            e.stopPropagation()
+            setViewModalOpened(true)
+        }} />,
+        <EditOutlined key="edit" onPointerDown={(e)=> e.stopPropagation()} onClick={(e) => {
+            e.stopPropagation()
+            setEditModalOpened(true)
+        }} />,
+        <DeleteOutlined key="delete" onPointerDown={(e)=> e.stopPropagation()}/>
     ];
 
     return (
