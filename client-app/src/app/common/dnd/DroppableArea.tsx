@@ -6,9 +6,13 @@ interface Props extends PropsWithChildren {
 }
 
 function DroppableArea({ uniqueId, children }: Props) {
-    const { setNodeRef } = useDroppable({
+    const { setNodeRef, isOver, over } = useDroppable({
         id: `${uniqueId}`,
     });
+
+    const style = {
+        boxShadow: isOver && over ? "rgba(0, 0, 0, 0.24) 0px 3px 8px" : "none",
+      };
 
     return (
         <div ref={setNodeRef}>

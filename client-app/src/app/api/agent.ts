@@ -1,12 +1,12 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { TaskItem } from "../models/TaskItem";
 
-axios.defaults.baseURL = "http://localhost:7250/api";
+axios.defaults.baseURL = "https://localhost:7250/api";
 
 axios.interceptors.response.use(async response => {
     return response;
 }, (error: AxiosError) => {
-    const { data, status, config } = error.response as AxiosResponse;
+    //const { data, status, config } = error.response as AxiosResponse;
     
     // switch (status) {
     //     case 400:

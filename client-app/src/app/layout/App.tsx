@@ -1,11 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Button, Card, Col, Divider, Flex, Grid, Layout, Menu, Row } from 'antd';
+import { Layout } from 'antd';
 import NavBar from './NavBar';
-import { Content, Footer, Header } from 'antd/es/layout/layout';
-import DroppableArea from '../common/dnd/DroppableArea';
-import DraggableItem from '../common/dnd/DraggableItem';
+import { Content } from 'antd/es/layout/layout';
 import MainPage from '../../features/MainPage';
 
 function App() {

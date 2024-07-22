@@ -1,22 +1,32 @@
-import { Badge, Card, Modal, Tag } from "antd";
-import { useState } from "react";
-import { EditOutlined, DeleteOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import EditTaskModal from "./EditTaskModal";
+import { Card, Modal, Tag } from "antd";
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { TaskItem } from "../../models/TaskItem";
+import { TaskItemStatus } from "../../models/enums/TaskItemStatus";
+import { useStore } from "../../stores/store";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 interface Props {
     isOpen: boolean;
     handleClose: () => void;
     openEditModal: () => void;
+    openDeleteModal: () => void;
     statusColour: string;
+    taskItem: TaskItem;
 }
 
-function ViewTaskModal({ handleClose, isOpen, openEditModal, statusColour }: Props) {
+function ViewTaskModal({ handleClose, isOpen, openEditModal, openDeleteModal, statusColour, taskItem }: Props) {
+    const { taskitemstore } = useStore();
+    const { deleteTaskItem } = taskitemstore;
+
     const actions: React.ReactNode[] = [
         <EditOutlined key="edit" onClick={() => {
             openEditModal()
             handleClose()
         }} />,
-        <DeleteOutlined key="delete" />
+        <DeleteOutlined key="delete" onClick={(e) => {
+            openEditModal();
+            handleClose();
+        }} />
     ];
 
     return (
@@ -30,14 +40,13 @@ function ViewTaskModal({ handleClose, isOpen, openEditModal, statusColour }: Pro
         >
             <Card actions={actions}>
                 <Card.Meta
-                    title="Card title"
+                    title={<div style={{ whiteSpace: 'normal', wordBreak: "break-word" }}>{taskItem.name}</div>}
                     description={
                         <>
                             <Tag bordered={false} color={statusColour} >
-                                status
+                                {TaskItemStatus[taskItem.status]}
                             </Tag>
-                            <p>This is the description</p>
-                            <p>This is the description</p>
+                            <p>{taskItem.description}</p>
                         </>
                     }
                 />
