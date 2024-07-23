@@ -71,7 +71,7 @@ export default observer(function EditTaskModal({ handleClose, isOpen, taskItem }
                         label="Description"
                         rules={[{ type: 'string' }]}
                     >
-                        <TextArea placeholder="Description" rows={4} minLength={3} maxLength={500}/>
+                        <TextArea placeholder="Description" rows={8} minLength={3} maxLength={500}/>
                     </Form.Item>
                     <Form.Item>
                         <Space>
